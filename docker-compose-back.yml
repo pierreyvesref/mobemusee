@@ -1,0 +1,80 @@
+version: '3'
+
+networks:
+  mobe:
+    driver: bridge
+
+services:
+
+  config:
+    container_name: server-config
+    build: MobeBackend/serverconfig/
+    image: serverconfig:latest
+    volumes:
+      - ./appconfigs:/appconfigs:rw
+    ports:
+      - 8888:8888
+    networks:
+      - mobe
+
+  eureka:
+    container_name: eureka-discovery
+    build: MobeBackend/eureka-discovery/
+    image: eureka:latest
+    depends_on:
+      - config
+    ports:
+      - 8761:8761
+    networks:
+      - mobe
+
+  gateway:
+    container_name: gateway
+    build: MobeBackend/gateway/
+    image: gateway:latest
+    depends_on:
+      - eureka
+    ports:
+      - 8088:8088
+    networks:
+      - mobe
+
+  authentification:
+    container_name: authentification-service
+    build: MobeBackend/authentificationws/
+    image: authentificationws:latest
+    volumes:
+      - ./data:/data:rw
+    depends_on:
+      - eureka
+    ports:
+    - 8080:8080
+    networks:
+    - mobe
+
+  musee:
+    container_name: musee-service
+    build: MobeBackend/museews/
+    image: museews:latest
+    volumes:
+      - ./data:/data:rw
+    depends_on:
+      - eureka
+    ports:
+      - 8081:8081
+    networks:
+      - mobe
+
+  paiement:
+    container_name: paiement-service
+    build: MobeBackend/paiementws/
+    image: paiementws:latest
+    volumes:
+      - ./data:/data:rw
+      - ./data/qrcodepng:/data/qrcodepng:rw
+    depends_on:
+      - eureka
+    ports:
+      - 8082:8082
+    networks:
+      - mobe

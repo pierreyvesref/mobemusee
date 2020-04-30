@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>objects.users.Admin</OriginalElement>
+  <nodes>
+    <node x="84.75" y="0.0">objects.users.User</node>
+    <node x="0.0" y="189.0">objects.users.Admin</node>
+    <node x="153.0" y="153.0">objects.users.Client</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="objects.users.Client" target="objects.users.User">
+      <point x="0.0" y="-63.5" />
+      <point x="248.0" y="128.0" />
+      <point x="193.5" y="128.0" />
+      <point x="36.25" y="51.5" />
+    </edge>
+    <edge source="objects.users.Admin" target="objects.users.User">
+      <point x="0.0" y="-27.5" />
+      <point x="66.5" y="128.0" />
+      <point x="121.0" y="128.0" />
+      <point x="-36.25" y="51.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="171.5" y="140.0" />
+  <SelectedNodes>
+    <node>objects.users.Admin</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,9 @@
+<div class="margin-page">
+    <mat-accordion>
+        <app-transaction *ngFor="let transaction of transactions"
+        [dateTransaction]="transaction.dateTransaction"
+        [montant]="transaction.montant"
+        [billetsMusee]="transaction.billetsMusee"
+        [moyenPaiement]="transaction.moyenPaiement"></app-transaction>
+    </mat-accordion>
+</div>

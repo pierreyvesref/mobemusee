@@ -1,0 +1,15 @@
+<div class="top-page">
+    <mat-accordion>
+        <app-mean-payment *ngFor="let moyenPaiement of moyenPaiements"
+        [id]="moyenPaiement.idMoyenpaiement"
+        [titulaire]="moyenPaiement.titulaire"
+        [typeCarte]="moyenPaiement.typeCarte"
+        [numCompte]="moyenPaiement.numCompte"
+        [cryptogramme]="moyenPaiement.cryptogramme"
+        [dateExpiration]="moyenPaiement.dateExpiration" (meanPaiementEvent) = "meanPaiementEventHander()"></app-mean-payment>
+    </mat-accordion>
+</div>
+<div class="bottom-page">
+    <button mat-raised-button (click)="ajouterMoyenPaiement()" color="primary">Ajouter un moyen de paiement</button>
+    <mat-label for="error" style="margin-left: 20px; color: red;" *ngIf="this.httpError">{{this.httpError.error}}</mat-label>
+</div>

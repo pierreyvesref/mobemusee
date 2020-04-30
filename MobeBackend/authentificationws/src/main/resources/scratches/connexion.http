@@ -1,0 +1,9 @@
+POST http://localhost:8088/mobe/authentification/user
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"login":"py", "mdp":"py"}
+
+### récuperer le token dans les response headers et le coller pour la requete checktoken
+

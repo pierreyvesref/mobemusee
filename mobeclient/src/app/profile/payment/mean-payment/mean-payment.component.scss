@@ -1,0 +1,10 @@
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+.expansion-panel{
+   margin-bottom: 10px;
+   background-color: darken($color: #faf9f9, $amount: 0);
+}

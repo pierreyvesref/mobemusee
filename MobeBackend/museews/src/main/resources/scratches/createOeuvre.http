@@ -1,0 +1,13 @@
+POST http://localhost:8088/mobe/musee/oeuvre
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+login: py
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NjE4Mzk3OSwicm9sZXMiOlsiVVNFUiJdfQ.XEIOGI9jrR_abUvi9yH6siNmkFgbKcEtmacIAM2xJlo
+
+{"nomOeuvre":"tyranosaure", "dateAchat":"2020-03-25", "prixAchat": "500000"}
+
+<> 2020-04-06T014702.500.json
+
+###
+

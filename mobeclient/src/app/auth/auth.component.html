@@ -1,0 +1,33 @@
+
+<div class="col-sm-8 col-sm-offset-2">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()" class="form">
+      <mat-form-field class="field" *ngIf="!this.isLogged()">
+        <mat-label for="login">Login</mat-label>
+        <input matInput type="text" id="login" class="form-control" [formControl]="login" required>
+        <mat-error *ngIf="login.invalid">{{getErrorMessage('login')}}</mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field class="field" *ngIf="!this.isLogged()">
+        <mat-label for="mdp">Mot de passe</mat-label>
+        <input matInput type="password" id="mdp" class="form-control" [formControl]="mdp" required>
+        <mat-error *ngIf="mdp.invalid">{{getErrorMessage('mdp')}}</mat-error>
+      </mat-form-field>
+      <br/>
+      <div *ngIf="!this.progressBarShowed" class="submit-form">
+        <button mat-stroked-button id="submit" type="submit" color="primary" *ngIf="!this.isLogged()" [disabled]="!this.formValid()">Se connecter</button>
+        <button mat-stroked-button id="submit" type="submit" color="warn" *ngIf="this.isLogged()">Se Déconnecter</button>
+        <mat-label for="error" style="margin-left: 20px; color: red;" *ngIf="this.httpError">{{this.httpError.error}}</mat-label>
+      </div>
+
+
+      <mat-progress-bar *ngIf="this.progressBarShowed" mode="buffer"></mat-progress-bar>
+
+    </form>
+    <br/>
+    <div *ngIf="!this.isLogged()">
+      <mat-label for="noAccount" >Pas de compte ? </mat-label>
+      <a href="/account">Cliquez ici !</a>
+    </div>
+  </div>
+
+  

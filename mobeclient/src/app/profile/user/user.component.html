@@ -1,0 +1,36 @@
+
+<!--<li [ngClass]="{'list-group-item': true}">-->
+<div class="utilisateur">
+    <mat-list>
+        <mat-list-item>
+            <h4 matSubheader>Pseudo :  {{ getLogin() }}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-list-item>
+            <h4 matSubheader>Mot de Passe : {{ getMdp() }}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-list-item>
+            <h4 matSubheader>Roles : {{ getRoles() }}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-list-item>
+            <h4 matSubheader>Date d'Inscription : {{ getDateInscription() | date:'dd/MM/yyyy' }}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-list-item>
+            <h4 matSubheader>Nom : {{ getNom() }}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-list-item>
+            <h4 matSubheader>Prenom : {{ getPrenom() }}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-list-item>
+            <h4 matSubheader>Adresse email : {{ getMail() }}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+</div>
+
+<!--<button mat-raised-button color="primary" (click)="modifier()">Modifier</button>-->

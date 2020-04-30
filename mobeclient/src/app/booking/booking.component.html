@@ -1,0 +1,64 @@
+<h2 matSubheader>Réserver au Musée MOBE</h2>
+
+<form [formGroup]="bookingForm" (ngSubmit)="reserver()">
+  <mat-label>Date de Réservation :</mat-label>
+  <mat-form-field class="selection-date">
+    <input matInput [matDatepicker]="picker" id="dateReservation" [formControl]="dateReservation" required>
+    <mat-error *ngIf="dateReservation.invalid">{{getErrorMessage('dateReservation')}}</mat-error>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <br/><br/><br/>
+
+  <mat-label>Nombre de places :  </mat-label>
+
+  <mat-form-field class="selection-tarif">
+    <mat-label>Tarif Normal</mat-label>
+    <mat-select [formControl]="nbBilletsNormal" (selectionChange)="refreshTotal()">
+      <mat-option *ngFor="let number of [0,1,2,3,4,5]" [value]="number">
+        {{number}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-label class="label-tarif">x 10€</mat-label>
+
+  <mat-form-field class="selection-tarif">
+    <mat-label>Tarif Junior</mat-label>
+    <mat-select [formControl]="nbBilletsJunior" (selectionChange)="refreshTotal()">
+      <mat-option *ngFor="let number of [0,1,2,3,4,5]" [value]="number">
+        {{number}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-label class="label-tarif">x 5€</mat-label>
+
+  <mat-form-field class="selection-tarif">
+    <mat-label>Tarif Senor</mat-label>
+    <mat-select [formControl]="nbBilletsSenor" (selectionChange)="refreshTotal()">
+      <mat-option *ngFor="let number of [0,1,2,3,4,5]" [value]="number">
+        {{number}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-label class="label-tarif">x 8€</mat-label>
+
+  <br/><br/><br/>
+  <mat-label>Total = {{this.total}} €</mat-label>
+  <br/><br/><br/>
+  <mat-label>Moyen de Paiement :  </mat-label>
+  <mat-form-field class="selection-meanPayment">
+    <mat-select [formControl]="selectMeansPayment">
+      <mat-error *ngIf="selectMeansPayment.invalid">{{getErrorMessage('selectMeansPayment')}}</mat-error>
+      <mat-option *ngFor="let moyenPaiement of moyensPaiement" [value]="moyenPaiement.idMoyenpaiement">
+        {{moyenPaiement.numCompte | creditCardMask:4}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/><br/><br/>
+
+  <button *ngIf="!this.progressBarShowed" mat-stroked-button id="submit" type="submit" color="primary" [disabled]="!this.formValid()">Réserver</button>
+  <mat-label for="error" style="color: red; margin-left: 20px;" *ngIf="this.httpError && !this.progressBarShowed">{{this.httpError.error}}</mat-label>
+
+  <mat-progress-bar *ngIf="this.progressBarShowed" mode="buffer"></mat-progress-bar>
+
+</form>

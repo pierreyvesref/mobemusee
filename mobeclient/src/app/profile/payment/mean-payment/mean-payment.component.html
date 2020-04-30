@@ -1,0 +1,19 @@
+    <mat-expansion-panel class="expansion-panel">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ getNumCompte() | creditCardMask:4 }}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{ getTypeCarte() }}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list>
+            <mat-list-item><mat-label>Titulaire de la Carte :  {{ getTitulaire() }}</mat-label></mat-list-item>
+            <mat-list-item><mat-label>Date d'Expiration : {{ getDateExpiration() | date:'dd/MM/yyyy' }}</mat-label></mat-list-item>
+            <mat-list-item><mat-label>Cryptogramme : {{ getCryptogramme() }}</mat-label></mat-list-item>
+            <!--<button mat-raised-button (click)="modifier()">Modifier</button>-->
+            <button mat-raised-button color="warn" style="margin-left: 20px;" (click)="supprimer()">Supprimer</button>
+            <mat-label for="error" style="color: red; margin-left: 20px;" *ngIf="this.httpError">{{this.httpError.error}}</mat-label>
+        </mat-list>
+    </mat-expansion-panel>
+

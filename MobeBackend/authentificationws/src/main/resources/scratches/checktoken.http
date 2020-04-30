@@ -1,0 +1,7 @@
+GET http://localhost:8088/mobe/authentification/checkToken
+Accept: */*
+Cache-Control: no-cache
+#token à mettre dans Authorization pour tester
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NzIyMjI2OSwicm9sZXMiOlt7InZhbHVlIjoiVXNlciJ9XX0._fi9i5pzrnJKTgd2_H1PfRPpR50QFc7KwGZ_bFekYTI
+###
+

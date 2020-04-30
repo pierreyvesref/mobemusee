@@ -1,0 +1,70 @@
+
+*****************************************BACKEND*****************************************
+
+-> A la première ouverture :
+
+1) mvn clean install sur le projet common (repertoire centralisé qui contient toutes les classes du modèle de données)
+
+2) ouvrir le projet MobeBackend et enable autoimport pour télécharger les dépendances du common (ou importer manuellement)
+
+3) Le common va surement être souvent mofidié donc il faut forcer maven à reimport le dependance même si la version SNAPCHOT reste inchangée ! Sinon par défaut pour lui rien à changer et donc il considère qu'il n'y a rien à reimport
+Sur la colonne Maven à droite du webservice : 
+Settings (petite clé à molette) -> Maven -> cocher la case Always update snapchots -> Valider
+
+
+
+
+-> Développement :
+
+- common:
+
+Après toute modification des classes + sauvegarde du common, ne pas oublier maven install dessus ($mvn install ou colonne à droite dans Lifecycle).
+Puis sur le webservice cliquer sur Reimport dependencies (colonne Maven à droite, le petit icone reupdate avec les 2 fleches) pour prendre en compte les modifs du common
+
+
+- webservices:
+
+archi habituelle d'un webservice...
+
+les ports de déploiement on été changés pour lancer les 3 webservices en même temps :
+8080 : authentification
+8081 : gestion administrateur
+8082 : paiement
+(config dans src/main/ressources/application.properties)
+
+chaque webservice contient un SecurityHandler qui requete l'authentificationws pour savoir si le token est valide ou non.
+
+
+Ajout de la techno Eureka : tous les webservices sont référencé dans un Eureka Discrovery qui a le port 8761 (interface web de monitoring à l'adresse http://localhost:8761/)
+Un gateway au port 8088 permet de redigirer les requetes vers les webservices correspondants
+
+
+-> RUN :
+- Lancer d'abord le serverconfig
+- Lancer d'abord eureka-discovery
+- Puis lancer tous les autres webservices
+(- Enfin lancer le ClientTest)
+
+
+
+******************************************FRONTEND******************************************
+
+-> A la première ouverture :
+
+- avoir node.js latest (contient la commandes npm dans /bin)
+- npm install -g npm@latest
+- npm install -g @angular/cli
+- ng serve
+
+
+
+-> Développement :
+
+
+
+-> RUN :
+- $ ng serve
+
+
+
+

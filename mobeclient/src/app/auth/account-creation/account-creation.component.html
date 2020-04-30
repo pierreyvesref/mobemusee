@@ -1,0 +1,38 @@
+<form [formGroup]="accountForm" (ngSubmit)="onSubmitForm()" class="example-form">
+    <mat-label for="login">Login : </mat-label>
+    <mat-form-field class="example-full-width">
+    <input matInput type="text" id="login" class="form-control" [formControl]="login" minlength="2" required>
+    <mat-error *ngIf="login.invalid">{{getErrorMessage('login')}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-label for="mdp">Mot de passe : </mat-label>
+    <mat-form-field class="example-full-width">
+    <input matInput type="password" id="mdp" class="form-control" [formControl]="mdp" required>
+    <mat-error *ngIf="mdp.invalid">{{getErrorMessage('mdp')}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-label for="nom">Nom : </mat-label>
+    <mat-form-field class="example-full-width">
+    <input matInput color="primary" type="text" id="nom" class="form-control" [formControl]="nom" required>
+    <mat-error *ngIf="nom.invalid">{{getErrorMessage('nom')}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-label for="prenom">Prenom : </mat-label>
+    <mat-form-field class="example-full-width">
+    <input matInput type="text" id="prenom" class="form-control" [formControl]="prenom" required>
+    <mat-error *ngIf="prenom.invalid">{{getErrorMessage('prenom')}}</mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-label for="mail">Mail : </mat-label>
+    <mat-form-field class="example-full-width">
+    <input matInput placeholder="eric@exemple.com" type="text" id="mail" class="form-control" [formControl]="mail" required>
+    <mat-error *ngIf="mail.invalid">{{getErrorMessage('mail')}}</mat-error>
+    </mat-form-field>
+    <br/><br/>
+    <button mat-stroked-button id="creer" type="submit" color="primary" [disabled]="!this.formValid()">Créer</button>
+    <button mat-stroked-button id="annuler" (click)="annuler()" color="warn" style="margin-left: 20px; margin-bottom: 20px;">Annuler</button>
+    <br/>
+    <mat-label for="error" style="color: red;" *ngIf="this.httpError">{{this.httpError.error}}</mat-label>
+</form>
+
+  

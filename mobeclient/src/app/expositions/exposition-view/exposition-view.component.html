@@ -1,0 +1,12 @@
+<div class="expo">
+    <h1>Nos Expositions</h1>
+    <mat-list>
+        <app-exposition *ngFor="let expo of expositions"
+        [idExpo]="expo.id"
+        [nomExpo]="expo.nom"
+        [dateDebutExpo]="expo.dateDebutExpo"
+        [dateFinExpo]="expo.dateFinExpo"></app-exposition>
+    </mat-list>
+</div>
+
+<mat-label for="error" style="color: red; margin-bottom: 20px;" *ngIf="this.httpError">{{this.httpError.error}}</mat-label>

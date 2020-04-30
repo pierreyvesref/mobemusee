@@ -1,0 +1,30 @@
+<mat-expansion-panel class="expansion-panel">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{ getDateTransaction() | date:'dd/MM/yyyy' }}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{ getMontant() }} €
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-label style="margin-bottom: 30px;">Moyen de paiement utilisé :  {{ getMoyenPaiementNum() | creditCardMask:4 }}</mat-label>
+
+    <br/>
+
+    <mat-list>
+        <app-ticket *ngFor="let billet of billetsMusee"
+            [keyQrCode]="billet.keyQrCode"
+            [dateVisite]="billet.dateVisite"
+            [isValide]="billet.isValide"
+            [typeTarif]="billet.typeTarif">
+        </app-ticket>
+    </mat-list>
+
+    <br/>
+
+
+    <button mat-stroked-button id="download" color="primary" style="margin-bottom: 30px;" (click)="downloadPDF()">Télécharger PDF</button>
+
+</mat-expansion-panel>
+
+

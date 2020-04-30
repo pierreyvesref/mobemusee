@@ -1,0 +1,13 @@
+GET http://localhost:8080/authent/init
+####
+POST http://localhost:8088/mobe/authentification/user
+Content-type: application/json
+
+{
+"login" : "py",
+"mdp" : "py"
+}
+###
+DELETE http://localhost:8080/authent/user/py
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NjUzODQ0OSwicm9sZXMiOlt7InZhbHVlIjoiVXNlciJ9XX0.bs7ZofKh4tK58fQ44TYDPcPqdL5vdKhDYX4ifD_Tshc
+###

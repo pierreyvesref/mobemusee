@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 8088
+
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://localhost:8761/eureka #localhost
+      defaultZone: http://eureka-discovery:8761/eureka #docker
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
+
+mobe:
+  path: /mobe
+
+authent:
+  path: /authentification
+  name: authentification-service
+
+musee:
+  path: /musee
+  name: musee-service
+
+paiement:
+  path: /paiement
+  name: paiement-service

@@ -1,0 +1,30 @@
+server: 
+  port: 8082
+
+spring:
+  jpa:
+    database-platform: fr.miage.orleans.isi.projet.paiementws.config.SQLiteDialect
+    hibernate:
+      ddl-auto: update #create-drop
+      naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+      connection: 
+        autocommit: true
+    show-sql: true
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:../data/db_musee.db
+
+
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://localhost:8761/eureka #localhost
+      defaultZone: http://eureka-discovery:8761/eureka #docker
+
+authent: 
+  connexion:
+#    uri: http://localhost:8088/mobe/authentification/user #localhost
+    uri: http://gateway:8088/mobe/authentification/user #docker
+  checkToken:
+#    uri: http://localhost:8088/mobe/authentification/checkToken #localhost
+    uri: http://gateway:8088/mobe/authentification/checkToken #docker

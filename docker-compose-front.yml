@@ -1,0 +1,16 @@
+version: '3'
+
+#networks:
+#  groupe-4_mobe:
+#    external: true
+
+services:
+
+  mobeclient:
+    container_name: mobeclient
+    build: mobeclient/
+    image: mobeclient:latest
+    ports:
+      - 80:80
+#    networks:
+#      - groupe-4_mobe

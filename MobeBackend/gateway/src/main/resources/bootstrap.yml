@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: api-gateway
+    profiles:
+      active: development
+  cloud:
+    config:
+      #uri: http://localhost:8888
+      uri: http://server-config:8888
+      username: root
+      password: s3cr3t

@@ -1,0 +1,11 @@
+POST http://localhost:8088/mobe/paiement/user/py/moyenPaiement
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+login: py
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NjM5NzU0Miwicm9sZXMiOlsiVVNFUiJdfQ.-vfi_D_ogPylegPiSsVK55lsj2bh4Br2_i-Ob7nElyg
+
+{"typeCarte": "CB", "numCompte": "546456", "dateExpiration": "2020-04-22T22:00:00.000Z", "cryptogramme": "456", "titulaire": "Ref Py"}
+
+###
+

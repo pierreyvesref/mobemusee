@@ -1,0 +1,324 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Swagger Film Vote"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "groupe4.swagger.io"
+basePath: "/mobemusee"
+tags:
+- name: "oeuvre"
+  description: "Accéder aux oeuvres"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "salle"
+  description: "Accéder aux salles"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "exposition"
+  description: "Accéder aux expositions"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "https"
+- "http"
+
+
+paths:
+  /oeuvre:
+    post:
+      tags:
+      - "oeuvre"
+      summary: "Ajouter une nouvelle oeuvre"
+      description: ""
+      operationId: "createOeuvre"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "oeuvre"
+        description: "Objet oeuvre créé"
+        required: true
+        schema:
+          $ref: "#/definitions/OeuvreDTO"
+      responses:
+        201:
+          description: "Oeuvre créée"
+        400:
+          description: "Oeuvre déjà existante"
+          
+    get:
+      tags:
+      - "oeuvre"
+      summary: "Récupérer la collection de toutes les oeuvres"
+      description: ""
+      operationId: "getAllOeuvres"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        200:
+          description: "Opération réussie"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/OeuvreDTO"
+    
+  /oeuvre/{oeuvreId}:
+    get:
+      tags:
+      - "oeuvre"
+      summary: "Trouver une oeuvre à partir de son identifiant"
+      description: ""
+      operationId: "getOeuvreById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "oeuvreId"
+        in: "path"
+        description: "ID de l'oeuvre à retourner"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Opération réussie"
+          schema:
+            $ref: "#/definitions/OeuvreDTO"
+        400:
+          description: "ID invalide"
+        404:
+          description: "Oeuvre non trouvée"
+    delete:
+      tags:
+      - "oeuvre"
+      summary: "Supprimer une oeuvre"
+      description: ""
+      operationId: "deleteOeuvre"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "oeuvreId"
+        in: "path"
+        description: "ID de l'oeuvre à supprimer"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Oeuvre supprimée"
+        400:
+          description: "ID invalide"
+        404:
+          description: "Oeuvre inexistante"
+      
+  /oeuvre/{oeuvreId}/deplacement:
+    post:
+      tags:
+      - "oeuvre"
+      summary: "Déplacer une oeuvre vers une autre salle"
+      description: ""
+      operationId: "moveOeuvre"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "oeuvreId"
+        description: "Oeuvre à déplacer"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "salle"
+        description: "Salle dans laquelle l'oeuvre est déplacée"
+        required: true
+        schema:
+          $ref: "#/definitions/SalleDTO"
+      responses:
+        200:
+          description: "OK"
+        400:
+          description: "Oeuvre introuvable"
+        401:
+          description: "Login inexistant"
+        406:
+          description: "Salle inexistante"
+  /salle:
+    get:
+      tags:
+      - "salle"
+      summary: "Récupérer la liste de toutes les salles"
+      description: ""
+      operationId: "getSalles"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        200:
+          description: "Opération réussie"
+          schema:
+            $ref: "#/definitions/SalleDTO"
+  /exposition:
+    post:
+      tags:
+      - "exposition"
+      summary: "Créer une exposition"
+      description: ""
+      operationId: "createExposition"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Exposition à créer"
+        required: true
+        schema:
+          $ref: "#/definitions/ExpositionDTO"
+      responses:
+        200:
+          description: "Opération réussie"
+        400:
+          description: "Exposition déjà existante"
+        401:
+          description: "Login inexistant"
+    get:
+      tags:
+      - "exposition"
+      summary: "Récupérer toutes les expositions"
+      description: ""
+      operationId: "getAllExpositions"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      
+      responses:
+        200:
+          description: "Opération réussie"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ExpositionDTO"
+  /exposition/{expositionId}:
+    delete:
+      tags:
+      - "exposition"
+      summary: "Supprimer une exposition"
+      description: ""
+      operationId: "deleteExposition"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "expositionId"
+        in: "path"
+        description: "ID de l'exposition à supprimer"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Exposition supprimée"
+        400:
+          description: "ID invalide"
+        404:
+          description: "Exposition inexistante"
+
+definitions:
+  OeuvreDTO:
+    type: "object"
+    required:
+    - "id"
+    - "nom"
+    - "dateAchat"
+    - "prixAchat"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      nom:
+        type: "string"
+      dateAchat:
+        type: "string"
+      prixAchat:
+        type: "number"
+    xml:
+      name: "Oeuvre"
+  SalleDTO:
+    type: "object"
+    required:
+    - "stringValue"
+    - "oeuvres"
+    properties:
+      stringValue:
+        type: "string"
+        description: "Nom de la salle"
+        enum:
+        - "Réserve"
+        - "Grand hall"
+        - "Entrée"
+        - "Petite salle 1"
+        - "Petite salle 2"
+        - "Petite salle 3"
+        - "Salle 1"
+        - "Salle 2"
+        - "Salle 3"
+      oeuvres:
+        type: "array"
+        xml:
+          name: "oeuvres"
+          wrapped: true
+        items:
+          type: "object"
+          $ref: "OeuvreDTO"
+  ExpositionDTO:
+    type: "object"
+    required:
+    - "id"
+    - "titre"
+    - "realisateur"
+    - "resume"
+    - "acteurs"
+    - "dateSortie"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      titre:
+        type: "string"
+        example: "50 nuances de Grey"
+      realisateur:
+        type: "string"
+      resume:
+        type: "string"
+      acteurs:
+        type: "array"
+        items: 
+          type: "string"
+      dateSortie:
+        type: "string"    
+      
+        
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

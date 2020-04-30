@@ -1,0 +1,129 @@
+# SALLES #
+
+DELETE http://localhost:8081/musee/salle/id
+###
+GET http://localhost:8088/mobe/musee/salle
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NzI0NDQ5OSwicm9sZXMiOlt7InZhbHVlIjoiVXNlciJ9XX0.N5lVWOe0uKe7U7g2Y9slpf6B6klTKkdQ-s1GrR0SJxs
+login: py
+
+###
+GET http://localhost:8081/musee/salle/1
+
+###
+POST http://localhost:8088/mobe/musee/salle
+Content-Type:application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NzE2OTY4Miwicm9sZXMiOlt7InZhbHVlIjoiVXNlciJ9XX0.B1AmAZTtBUZAAtnFFj5bLfxdTejgxD_CQiTHenckBjg
+login: py
+
+{
+  "id": "0",
+  "value": "Deuxieme salle",
+  "oeuvres": []
+}
+
+###
+POST http://localhost:8088/mobe/musee/salle
+Content-Type:application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NzIzOTU2Niwicm9sZXMiOlt7InZhbHVlIjoiVXNlciJ9XX0.r1icLCOCXOKFemPwf4BIYFW9K1leoIEh2m8GXU5s7-M
+login: py
+
+{
+  "id": "0",
+  "value": "3 salle",
+  "oeuvres": []
+}
+
+
+###
+POST http://localhost:8081/musee/salle/1/2
+###
+DELETE http://localhost:8081/musee/salle/1/2
+
+###
+GET http://localhost:8081/musee/salle/oeuvre/1
+
+# OEUVRES #
+
+###
+GET http://localhost:8081/musee/oeuvre
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NzIzOTU2Niwicm9sZXMiOlt7InZhbHVlIjoiVXNlciJ9XX0.r1icLCOCXOKFemPwf4BIYFW9K1leoIEh2m8GXU5s7-M
+login: py
+
+###
+GET http://localhost:8081/musee/oeuvre/1
+
+###
+GET http://localhost:8081/musee/oeuvre/name
+Content-Type:application/json
+
+{
+  "nomOeuvre" : "salut c moiV2"
+}
+
+###
+##NOT WORKING
+POST http://localhost:8081/musee/oeuvre
+Content-Type:application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NzIzOTU2Niwicm9sZXMiOlt7InZhbHVlIjoiVXNlciJ9XX0.r1icLCOCXOKFemPwf4BIYFW9K1leoIEh2m8GXU5s7-M
+login: py
+
+{
+  "nomOeuvre" : "salut c moiV3",
+  "dateAchat" : "2020-04-03T12:12:24.000+0000",
+  "prixAchat" : "100.0"
+}
+###
+POST http://localhost:8081/musee/oeuvre/3/deplacement
+Content-Type:application/json
+
+{
+  "id": "0",
+  "value": "Grande Salle"
+}
+
+
+###
+PATCH http://localhost:8081/musee/oeuvre/3
+Content-Type:application/json
+
+{
+  "nomOeuvre" : "salut c moi V2",
+  "dateAchat" : "2020-04-03T22:00:00.000+0000",
+  "prixAchat" : "1500.0"
+}
+
+###
+PATCH http://localhost:8081/musee/oeuvre/prix/2
+Content-Type:application/json
+
+{
+  "prixOeuvre" : "6000000.0"
+}
+
+###
+DELETE http://localhost:8081/musee/oeuvre/2
+
+# EXPOSITIONS #
+
+###
+GET http://localhost:8081/musee/exposition
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NzI0MDA2OSwicm9sZXMiOlt7InZhbHVlIjoiVXNlciJ9XX0.7NeBhHnAEJRiUwjNeJ52KyDIeWCLDSmgx30ofVGtYEg
+login: py
+
+###
+GET http://localhost:8081/musee/exposition/4
+###
+DELETE http://localhost:8081/musee/exposition/2
+###
+POST http://localhost:8081/musee/exposition
+Content-Type:application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJweSIsImV4cCI6MTU4NzMwOTk5OCwicm9sZXMiOlt7InZhbHVlIjoiVXNlciJ9XX0.g0GlzW7R_2eiuh4stR0a7f8FQ2OrU2E0Brq1SZdw0Cg
+login: py
+
+{
+  "nom" : "Rome Antique",
+  "dateDebutExpo" : "2020-06-03T22:00:00.000+0000",
+  "dateFinExpo" : "2020-07-03T22:00:00.000+0000"
+}
+
+###
