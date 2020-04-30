@@ -2,7 +2,7 @@
 
 Welcome to our MOBE application !
 
-University project during my second year of Master's degree (2020). It was made in two months in a team of 4 people.
+University project during my second year of Master's degree (2020). It was made in 1 month in a team of 4 people.
 
 This is a museum web application which provides :
 
