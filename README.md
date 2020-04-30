@@ -1,6 +1,6 @@
 # mobemusee
 
-Bienvenue sur notre applciation MOBE !
+Bienvenue sur notre application MOBE !
 
 Pré-requis :
  - maven
@@ -15,14 +15,14 @@ Pré-requis :
 
 Ce fichier exécute les commandes suivantes :
 
-	packaging en jar du backend :
+#packaging en jar du backend :
 $ mvn -f ./MobeBackend package -Dmaven.test.skip=true
 
-	#conteneurisation du backend :
+#conteneurisation du backend :
 $ docker-compose -f docker-compose-back.yml up
 
-	#conteneurisation du frontend :
+#conteneurisation du frontend :
 $ docker-compose -f docker-compose-front.yml up
 
-	#compilation de javafx :
+#compilation de javafx :
 $ mvn compile -f ./MobeFrontend; mvn exec:java -f ./MobeFrontend -Dexec.mainClass='application.Main'
